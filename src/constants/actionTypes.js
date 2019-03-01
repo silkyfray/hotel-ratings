@@ -1,4 +1,4 @@
-export const ADD_HOTELS = 'ADD_HOTELS';
+export const ADD_HOTEL = 'ADD_HOTELS';
 export const SORT_ASC = 'SORT_ASC';
 export const SORT_DESC = 'SORT_DESC';
 export const ADD_FACILITY_FILTER = 'ADD_FACILITY_FILTER';
