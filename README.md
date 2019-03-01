@@ -1,4 +1,12 @@
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Implementation Notes
+
+The unit tests cover reducer logic and presentation component. You can follow the TDD approach taken by looking at the commit history.
+
+Why is the final array of hotels computed in the component rather than the reducer?
+UI display properties such as sort and filtering are a function of how data is visually represented. That is a concern of the presentational component. Arguably, we can have an additional `hotelsToDisplay` array beside the original `hotels` array inside of the reducer that is constructed then and there and just fed to the presentational component. We are trading performance since everytime the render fires the component has to do sorting/filtering computation.
 
 ## Available Scripts
 
