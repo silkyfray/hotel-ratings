@@ -8,7 +8,7 @@ import './App.scss';
 import FiltersContainer from './components/Filters/FiltersContainer';
 import ResultsContainer from './components/Results/ResultsContainer';
 
-const store = createStore(hotelReducer);
+const store = createStore(hotelReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class App extends Component {
 	render() {
