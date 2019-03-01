@@ -6,7 +6,7 @@ const ResultsTable = ({ hotels, sort, facilities }) => {
 	const getFilteredHotels = (hotels, facilities) => {
 		return facilities && facilities.length
 			? hotels.filter((hotel) =>
-					hotel.facilities.some((facility) => facilities.find((facilityToTake) => facilityToTake === facility))
+					facilities.every((facility) => hotel.facilities.find((facilityToTake) => facilityToTake === facility))
 				)
 			: hotels;
 	};

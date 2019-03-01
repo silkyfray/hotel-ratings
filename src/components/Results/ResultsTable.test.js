@@ -29,4 +29,14 @@ describe('ResultsTable', () => {
 			expect(facility.render().text()).toContain('car park');
 		});
 	});
+	it('should display hotels with two filter applied', () => {
+		const { enzymeWrapper } = setup({ ...initialState, facilities: [ 'car park', 'pool' ] });
+
+		const facilities = enzymeWrapper.find('.facility');
+		facilities.forEach((facility) => {
+			const text = facility.render().text();
+			expect(text).toContain('car park');
+			expect(text).toContain('pool');
+		});
+	});
 });
