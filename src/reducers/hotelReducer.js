@@ -1,10 +1,12 @@
 import * as hotelActionTypes from '../constants/actionTypes';
+import * as sortTypes from '../constants/sortTypes';
 
 import data from '../data/hotels';
 
 export const initialState = {
 	hotels: data,
-	facilities: []
+	facilities: [],
+	sort: sortTypes.DESCENDING
 };
 
 export default (state = initialState, action) => {
@@ -19,9 +21,22 @@ export default (state = initialState, action) => {
 			result.facilities.push(action.payload);
 			return result;
 		}
-		case hotelActionTypes.REMOVE_FACILITY_FILTER:
-		case hotelActionTypes.SORT_ASC:
-		case hotelActionTypes.SORT_DESC:
+		case hotelActionTypes.REMOVE_FACILITY_FILTER: {
+			let result = { ...state };
+			result = result.facilities.filter((facility) => facility !== action.payload);
+			return result;
+		}
+		case hotelActionTypes.SORT_ASC: {
+			let result = { ...state };
+			result.sort = sortTypes.ASCDENDING;
+			return result;
+		}
+
+		case hotelActionTypes.SORT_DESC: {
+			let result = { ...state };
+			result.sort = sortTypes.DESCENDING;
+			return result;
+		}
 		default:
 			return state;
 	}
