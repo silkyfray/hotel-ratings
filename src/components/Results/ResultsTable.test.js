@@ -3,6 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import ResultsTable from './ResultsTable';
 import { initialState } from '../../reducers/hotelReducer';
+import { ASCDENDING } from '../../constants/sortTypes';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -38,5 +39,15 @@ describe('ResultsTable', () => {
 			expect(text).toContain('car park');
 			expect(text).toContain('pool');
 		});
+	});
+	it('should render hotels in ascending sort', () => {
+		const { enzymeWrapper } = setup({ ...initialState, sort: ASCDENDING });
+
+		const starNodes = enzymeWrapper.find('.star');
+		const stars = starNodes.map((starNode) => starNode.render().text());
+		console.log('here', starNodes.length);
+		for (let index = 0; index < stars.length - 1; index++) {
+			expect(stars[index] <= stars[index + 1]).toBeTruthy();
+		}
 	});
 });

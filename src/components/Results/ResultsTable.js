@@ -24,7 +24,7 @@ const ResultsTable = ({ hotels, sort, facilities }) => {
 					return (
 						<tr className="results-row" key={index}>
 							<td>{hotel.name}</td>
-							<td>{hotel.starRating}</td>
+							<td className="star">{hotel.starRating}</td>
 							<td className="facility">
 								{hotel.facilities.reduce((a, c) => (!a ? c : a + ', ' + c), '')}
 							</td>
