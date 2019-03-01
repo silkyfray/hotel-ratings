@@ -1,6 +1,6 @@
 import reducer from './hotelReducer';
 import * as types from '../constants/actionTypes';
-import * as data from '../data/hotels.json';
+import data from '../data/hotels';
 
 describe('hotel reducer', () => {
 	it('should return the initial state', () => {
@@ -12,6 +12,6 @@ describe('hotel reducer', () => {
 			starRating: 5,
 			facilities: []
 		};
-		expect(reducer(data, { type: types.ADD_HOTEL, ...newHotel })).toContain(newHotel);
+		expect(reducer(data, { type: types.ADD_HOTEL, payload: newHotel })).toContain(newHotel);
 	});
 });
