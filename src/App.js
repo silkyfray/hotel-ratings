@@ -8,7 +8,7 @@ import './App.scss';
 import FiltersContainer from './components/Filters/FiltersContainer';
 import ResultsContainer from './components/Results/ResultsContainer';
 
-const store = createStore(hotelReducer, {});
+const store = createStore(hotelReducer);
 
 class App extends Component {
 	render() {
