@@ -35,16 +35,16 @@ export default connect(
 			<Form>
 				{gatherPossibleFacilities(hotels).map((facility, index) => (
 					<div key={index}>
-						<Form.Label>{facility}:</Form.Label>
 						<Form.Check.Input
 							type="checkbox"
 							isValid={facilities.includes(facility)}
 							onChange={toggleFacility(facility)}
 						/>
+						<Form.Label>{facility}</Form.Label>
 					</div>
 				))}
-				<Form.Label>Ascending:</Form.Label>
 				<Form.Check.Input type="checkbox" isValid={sort === ASCDENDING} onChange={toggleSort} />
+				<Form.Label>Ascending</Form.Label>
 			</Form>
 		</div>
 	);
