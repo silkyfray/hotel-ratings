@@ -6,9 +6,7 @@ import { ASCDENDING } from '../../constants/sortTypes';
 const ResultsTable = ({ hotels, sort, facilities }) => {
 	const getFilteredHotels = (hotels, facilities) => {
 		return facilities && facilities.length
-			? hotels.filter((hotel) =>
-					facilities.every((facility) => hotel.facilities.find((facilityToTake) => facilityToTake === facility))
-				)
+			? hotels.filter((hotel) => facilities.every((facility) => hotel.facilities.includes(facility)))
 			: hotels;
 	};
 	const getSortedHotels = (hotels, sort) => {
