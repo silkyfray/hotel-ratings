@@ -25,7 +25,7 @@ describe('hotel reducer', () => {
 				{ initialState, facilities: [ 'car park' ] },
 				{ type: types.REMOVE_FACILITY_FILTER, payload: 'car park' }
 			).facilities
-		).toBeFalsy();
+		).toHaveLength(0);
 	});
 	it(`should handle ${types.SORT_ASC}`, () => {
 		expect(reducer({ initialState, sort: sortTypes.DESCENDING }, { type: types.SORT_ASC }).sort).toEqual(

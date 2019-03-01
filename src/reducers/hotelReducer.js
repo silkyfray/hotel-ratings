@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
 		}
 		case hotelActionTypes.REMOVE_FACILITY_FILTER: {
 			let result = { ...state };
-			result = result.facilities.filter((facility) => facility !== action.payload);
+			result.facilities = result.facilities.filter((facility) => facility !== action.payload);
 			return result;
 		}
 		case hotelActionTypes.SORT_ASC: {
