@@ -1,14 +1,15 @@
 import React from 'react';
-import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import Form from 'react-bootstrap/Form';
 import ResultsTable from './ResultsTable';
 
-const mapStateToProps = (state) => {};
-export default connect()(({}) => {
+const mapStateToProps = (state) => {
+	return { ...state.hotels };
+};
+
+export default connect(mapStateToProps)((props) => {
 	return (
 		<div>
-			<ResultsTable />
+			<ResultsTable {...props} />
 		</div>
 	);
 });

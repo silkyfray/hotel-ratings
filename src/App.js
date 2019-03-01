@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import hotelReducer from './reducers/hotelReducer';
@@ -8,7 +8,8 @@ import './App.scss';
 import FiltersContainer from './components/Filters/FiltersContainer';
 import ResultsContainer from './components/Results/ResultsContainer';
 
-const store = createStore(hotelReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const rootReducer = combineReducers({ hotels: hotelReducer });
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class App extends Component {
 	render() {
@@ -16,7 +17,7 @@ class App extends Component {
 			<Provider store={store}>
 				<div className="App">
 					<FiltersContainer />
-					{/* <ResultsContainer /> */}
+					<ResultsContainer />
 				</div>
 			</Provider>
 		);

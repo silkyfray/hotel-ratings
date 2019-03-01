@@ -1,20 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
-import {} from 'react-bootstrap/FormCheckInput';
 
 import './FiltersContainer.scss';
 import { ADD_FACILITY_FILTER, REMOVE_FACILITY_FILTER, SORT_ASC, SORT_DESC } from '../../constants/actionTypes';
 import { ASCDENDING } from '../../constants/sortTypes';
 
-const mapStateToProps = (state) => {
-	return { ...state };
-};
+const mapStateToProps = (state) => ({
+	...state.hotels
+});
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		toggleFacility: (facility) => (e) => {
-			dispatch({ type: e.target.checked ? ADD_FACILITY_FILTER : REMOVE_FACILITY_FILTER, payload: facility });
+			dispatch({
+				type: e.target.checked ? ADD_FACILITY_FILTER : REMOVE_FACILITY_FILTER,
+				payload: facility
+			});
 		},
 		toggleSort: (e) => {
 			dispatch({ type: e.target.checked ? SORT_ASC : SORT_DESC });
