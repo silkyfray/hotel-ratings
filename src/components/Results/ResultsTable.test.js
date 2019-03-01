@@ -6,11 +6,7 @@ import { initialState } from '../../reducers/hotelReducer';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-function setup() {
-	const props = {
-		...initialState
-	};
-
+function setup(props = initialState) {
 	const enzymeWrapper = shallow(<ResultsTable {...props} />);
 
 	return {
@@ -24,5 +20,11 @@ describe('ResultsTable', () => {
 		const { enzymeWrapper } = setup();
 
 		expect(enzymeWrapper.find('.results-row')).toHaveLength(initialState.hotels.length);
+	});
+	it('should display hotels with one filter applied', () => {
+		const { enzymeWrapper } = setup({ ...initialState, facilities: [ 'car park' ] });
+
+		console.log();
+		expect(enzymeWrapper.find('.facilities').every((facility) => facility.text.contains('car park'))).toBeTruthy();
 	});
 });

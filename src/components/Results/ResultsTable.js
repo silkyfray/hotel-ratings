@@ -18,7 +18,7 @@ const ResultsTable = ({ hotels, sort, facilities }) => {
 						<tr className="results-row" key={index}>
 							<td>{hotel.name}</td>
 							<td>{hotel.starRating}</td>
-							<td>{hotel.facilities}</td>
+							<td className="facilities">{hotel.facilities}</td>
 						</tr>
 					);
 				})}
