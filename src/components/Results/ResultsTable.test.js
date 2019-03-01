@@ -24,7 +24,9 @@ describe('ResultsTable', () => {
 	it('should display hotels with one filter applied', () => {
 		const { enzymeWrapper } = setup({ ...initialState, facilities: [ 'car park' ] });
 
-		console.log();
-		expect(enzymeWrapper.find('.facilities').every((facility) => facility.text.contains('car park'))).toBeTruthy();
+		const facilities = enzymeWrapper.find('.facility');
+		facilities.forEach((facility) => {
+			expect(facility.render().text()).toContain('car park');
+		});
 	});
 });

@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import Table from 'react-bootstrap/Table';
 
 const ResultsTable = ({ hotels, sort, facilities }) => {
+	const getFilteredHotels = (hotels, facilities) => {
+		return facilities && facilities.length
+			? hotels.filter((hotel) =>
+					hotel.facilities.some((facility) => facilities.find((facilityToTake) => facilityToTake === facility))
+				)
+			: hotels;
+	};
 	return (
 		<Table responsive className="Results">
 			<thead>
@@ -13,12 +20,14 @@ const ResultsTable = ({ hotels, sort, facilities }) => {
 				</tr>
 			</thead>
 			<tbody>
-				{hotels.map((hotel, index) => {
+				{getFilteredHotels(hotels, facilities).map((hotel, index) => {
 					return (
 						<tr className="results-row" key={index}>
 							<td>{hotel.name}</td>
 							<td>{hotel.starRating}</td>
-							<td className="facilities">{hotel.facilities}</td>
+							<td className="facility">
+								{hotel.facilities.reduce((a, c) => (!a ? c : a + ', ' + c), '')}
+							</td>
 						</tr>
 					);
 				})}
