@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Table from 'react-bootstrap/Table';
+import { ASCDENDING } from '../../constants/sortTypes';
 
 const ResultsTable = ({ hotels, sort, facilities }) => {
 	const getFilteredHotels = (hotels, facilities) => {
@@ -9,6 +10,11 @@ const ResultsTable = ({ hotels, sort, facilities }) => {
 					facilities.every((facility) => hotel.facilities.find((facilityToTake) => facilityToTake === facility))
 				)
 			: hotels;
+	};
+	const getSortedHotels = (hotels, sort) => {
+		return hotels.sort(
+			(h1, h2) => (sort === ASCDENDING ? h1.starRating - h2.starRating : h2.starRating - h1.starRating)
+		);
 	};
 	return (
 		<Table responsive className="Results">
@@ -20,7 +26,7 @@ const ResultsTable = ({ hotels, sort, facilities }) => {
 				</tr>
 			</thead>
 			<tbody>
-				{getFilteredHotels(hotels, facilities).map((hotel, index) => {
+				{getSortedHotels(getFilteredHotels(hotels, facilities), sort).map((hotel, index) => {
 					return (
 						<tr className="results-row" key={index}>
 							<td>{hotel.name}</td>
