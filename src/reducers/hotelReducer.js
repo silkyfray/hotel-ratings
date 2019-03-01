@@ -17,14 +17,10 @@ export default (state = initialState, action) => {
 			return result;
 		}
 		case hotelActionTypes.ADD_FACILITY_FILTER: {
-			const result = { ...state };
-			result.facilities.push(action.payload);
-			return result;
+			return { ...state, facilities: state.facilities.concat(action.payload) };
 		}
 		case hotelActionTypes.REMOVE_FACILITY_FILTER: {
-			let result = { ...state };
-			result.facilities = result.facilities.filter((facility) => facility !== action.payload);
-			return result;
+			return { ...state, facilities: state.facilities.filter((facility) => facility !== action.payload) };
 		}
 		case hotelActionTypes.SORT_ASC: {
 			let result = { ...state };
