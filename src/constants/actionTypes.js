@@ -1,0 +1,5 @@
+export const ADD_HOTELS = 'ADD_HOTELS';
+export const SORT_ASC = 'SORT_ASC';
+export const SORT_DESC = 'SORT_DESC';
+export const ADD_FACILITY_FILTER = 'ADD_FACILITY_FILTER';
+export const REMOVE_FACILITY_FILTER = 'REMOVE_FACILITY_FILTER';
