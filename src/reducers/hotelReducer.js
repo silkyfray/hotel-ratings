@@ -2,10 +2,16 @@ import * as hotelActionTypes from '../constants/actionTypes';
 
 import data from '../data/hotels';
 
-export default (state = data, action) => {
+export const initialState = {
+	hotels: data,
+	facilities: []
+};
+
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case hotelActionTypes.ADD_HOTEL:
-			const result = [ ...state, action.payload ];
+			const result = { ...state };
+			result.hotels.push(action.payload);
 			return result;
 		case hotelActionTypes.ADD_FACILITY_FILTER:
 		case hotelActionTypes.REMOVE_FACILITY_FILTER:
